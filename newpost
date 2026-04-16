@@ -6,7 +6,7 @@ DATE=$(date +%Y-%m-%d)
 TIME=$(date +%H:%M)
 FILE="_posts/$DATE-$SLUG.md"
 
-cp new_post.md "$FILE"
+cp ./_templates/new_post.md "$FILE"
 sed -i '' "s/title: \"\"/title: \"$TITLE\"/" "$FILE"
 sed -i '' "s/date:/date: $DATE $TIME/" "$FILE"
 
