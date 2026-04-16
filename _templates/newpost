@@ -2,11 +2,12 @@
 
 TITLE="$*"
 SLUG=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 DATE=$(date +%Y-%m-%d)
 TIME=$(date +%H:%M)
-FILE="_posts/$DATE-$SLUG.md"
+FILE="$SCRIPT_DIR/../_posts/$DATE-$SLUG.md"
 
-cp ./_templates/new_post.md "$FILE"
+cp "$SCRIPT_DIR/new_post.md" "$FILE"
 sed -i '' "s/title: \"\"/title: \"$TITLE\"/" "$FILE"
 sed -i '' "s/date:/date: $DATE $TIME/" "$FILE"
 
